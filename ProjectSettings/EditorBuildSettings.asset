@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/_Scenes/UnityTrebuchet.unity
+    guid: b05e557c76d34ef44a24849884e4a2dc
   m_configObjects: {}

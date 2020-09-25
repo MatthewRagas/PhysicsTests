@@ -4,14 +4,15 @@ using UnityEngine;
 
 
 [RequireComponent (typeof(CharacterController))]
+[RequireComponent(typeof(Animator))]
 public class PlayerMovementBehavior : MonoBehaviour
 {
 
     private CharacterController _controller = null;
     private Animator _animator = null;
 
-    public float speed = 80.0f;
-    public float turnRate = 2.0f;
+    public float speed = 1.0f;
+    public float turnRate = 1.0f;
     public float pushPower = 2.0f;
 
     public bool tankControls = true;
@@ -37,12 +38,12 @@ public class PlayerMovementBehavior : MonoBehaviour
         }
         else
         {
-            _controller.SimpleMove(movement);
+            _controller.Move(movement * speed);
             if (movement.magnitude > 0)
                 transform.forward = movement.normalized;
 
         }
-        
+        _animator.SetFloat("Speed", movement.z * speed);
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
@@ -56,7 +57,7 @@ public class PlayerMovementBehavior : MonoBehaviour
             return;
 
         Vector3 pushDirection = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
-        otherRB.velocity = pushDirection * pushPower;
+        //otherRB.velocity = pushDirection * pushPower;
         otherRB.AddForceAtPosition(pushDirection * pushPower, hit.point);
     }
 }

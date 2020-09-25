@@ -7,8 +7,8 @@ public class RagdollTrigger : MonoBehaviour
     // Start is called before the first frame update
     private void OnTriggerEnter(Collider other)
     {
-        Ragdoll ragdoll = other.gameObject.GetComponentInParent<Ragdoll>();
+        RagdollBehavior ragdoll = other.gameObject.GetComponentInParent<RagdollBehavior>();
         if (ragdoll != null)
-            ragdoll.RagdollOn = true;
+            ragdoll.ragdollEnabled = true;
     }
 }
